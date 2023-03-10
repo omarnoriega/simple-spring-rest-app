@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class RespuestaServicio {
 
-    public static ResponseEntity<Object> generateResponse(HttpStatus status, boolean error,String message, Object responseObj) {
+    public static ResponseEntity<Object> generarRespuesta(HttpStatus status, boolean error, String message, Object responseObj) {
             Map<String, Object> map = new HashMap<String, Object>();
             try {
                 map.put("timestamp", new Date());
@@ -19,7 +19,6 @@ public class RespuestaServicio {
                 map.put("data", responseObj);
                 map.put("token", "token_active");
 
-                return new ResponseEntity<Object>(map,status);
             } catch (Exception e) {
                 map.clear();
                 map.put("timestamp", new Date());
@@ -28,7 +27,7 @@ public class RespuestaServicio {
                 map.put("message", e.getMessage());
                 map.put("data", null);
                 map.put("token", null);
-                return new ResponseEntity<Object>(map,status);
             }
+        return new ResponseEntity<Object>(map,status);
         }
     }
